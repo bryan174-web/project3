@@ -1,0 +1,130 @@
+<!DOCTYPE >
+<html>
+
+<!-- Student Name: Bryan Sevilla
+Assignment Name: index for Project 3
+Date: 10/30/2025
+-->
+
+<head>
+  <title>project 3</title>
+   <link rel="stylesheet" type="text/css" href="css/styles.css">
+    
+    
+
+  </head>
+
+<!--First time adding a poster-->
+<video id="myVideo" controls width="500" poster="vid/BryanS_140_Style_Frame03.png" >
+  <source src="vid/BryanS_140_final_02.mp4"  type="video/mp4" >
+  Your browser does not support the video tag.
+</video>
+
+<div id="intro-message">
+  <h2>This video was my final for my Motion Graphics class.</h2>
+</div>
+
+<div id="overlay-content" class="hidden">
+  <h3>Nietzsche's concept of eternal recurrence</h3>
+  <p>I don't know everything about Friedrich Nietzsche, but this quote I always think about.  
+    <strong>ARTDM 140 Motion Graphics</strong>.</p>
+</div>
+
+
+
+<img id="myImage" src="images/nietzshe_pic.png" alt="Triggered Image" class="hidden" width="500">
+</html>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+  const video = document.getElementById('myVideo');
+  const introMessage = document.getElementById('intro-message');
+  const overlayContent = document.getElementById('overlay-content');
+  
+ 
+  let contentShown = false;
+
+  video.addEventListener('timeupdate', () => {
+    
+    if (video.currentTime >= 10 && !contentShown) {
+      // Hide the initial message and show the new content.
+      introMessage.classList.add('hidden');
+      overlayContent.classList.remove('hidden');
+
+     
+      contentShown = true;
+    }
+   
+  });
+
+
+
+
+  video.addEventListener('timeupdate', () => {
+   
+    if (video.currentTime >= 20 && !contentShown) {
+      // Hide the initial message and show the new content.
+      
+      introMessage.classList.add('hidden');
+      overlayContent.classList.remove('hidden');
+
+
+      // Set the flag to true so this code block doesn't run again.
+      contentShown = true;
+    }
+  });
+
+ 
+  video.addEventListener('ended', () => {
+    // Show the intro message again and hide the overlay.
+    introMessage.classList.remove('hidden');
+    overlayContent.classList.add('hidden');
+    overlayContent2.classList.add('hidden');
+    contentShown = false; // Reset the flag
+  });
+});
+
+// Get the video and image elements from the DOM
+const video = document.getElementById('myVideo');
+const image = document.getElementById('myImage');
+
+// Define the timestamp in seconds when the image should appear
+const triggerTime = 20; 
+
+// Add a flag to prevent the event from triggering repeatedly
+let imageTriggered = false;
+
+// Add a timeupdate event listener to the video
+video.addEventListener('timeupdate', () => {
+    // Check if the current time has passed the trigger point
+    // Use >= for reliability, in case the exact time is missed.
+    if (video.currentTime >= triggerTime && !imageTriggered) {
+        // Show the image by removing the 'hidden' class
+        image.classList.remove('hidden');
+
+        // Set the flag to true so the image doesn't reappear
+        imageTriggered = true;
+    }
+});
+
+
+video.addEventListener('seeked', () => {
+   
+    if (video.currentTime < triggerTime && imageTriggered) {
+        // Hide the image again
+        image.classList.add('hidden');
+
+        // Reset the flag
+        imageTriggered = false;
+    }
+});
+
+</script>
+  
+
+
+
+
+
+
