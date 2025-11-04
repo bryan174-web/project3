@@ -1,5 +1,5 @@
-<!DOCTYPE >
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <!-- Student Name: Bryan Sevilla
 Assignment Name: index for Project 3
@@ -16,9 +16,21 @@ Date: 10/30/2025
 
 <!--First time adding a poster-->
 <video id="myVideo" controls width="500" poster="vid/BryanS_140_Style_Frame03.png" >
+  <iframe width="500" height="315" src="https://www.youtube.com/embed/zJVbwDqLKiE?si=-DnMFQKvRO-YPZoA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
   <source src="vid/BryanS_140_final_02.mp4"  type="video/mp4" >
+  <source src="vid/leverage-a-synergy.webm" type="video/webm" >
   Your browser does not support the video tag.
 </video>
+<ul class="my-controls">
+        <li onclick="playVideo()">Play</li>
+        <li onclick="pauseVideo()">Pause</li>
+        <li onclick="muteVideo()">Mute</li>
+        <li onclick="unmuteVideo()">Unmute</li>
+        <li onclick="fastforwardVideo()">fastforward</li>
+        <li>slow</li>
+
+        
+    </ul>
 
 <div id="intro-message">
   <h2>This video was my final for my Motion Graphics class.</h2>
@@ -33,7 +45,11 @@ Date: 10/30/2025
 
 
 <img id="myImage" src="images/nietzshe_pic.png" alt="Triggered Image" class="hidden" width="500">
+
+  <iframe width="500" height="315" src="https://www.youtube.com/embed/zJVbwDqLKiE?si=s2hOHLxzFP7UrTOk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 </html>
+
 
 
 <script>
@@ -119,6 +135,42 @@ video.addEventListener('seeked', () => {
         imageTriggered = false;
     }
 });
+
+var my=document.getElementById("myVideo");
+ function playVideo(){
+        my.play();        
+    }
+
+    function pauseVideo(){
+        my.pause();
+    }
+
+    function muteVideo(){
+        my.muted=true;
+    }
+
+    function unmuteVideo(){
+        my.muted=false;
+    }
+
+    function fastforwardVideo(){
+        my.fastforward= skipTime = 10;
+
+    }
+   
+
+fastforward.addEventListener('click', () => {
+  // Add the skipTime to the video's current playback time
+  video.currentTime += skipTime;
+});
+const fast = document.getElementById("fast");
+
+fast.addEventListener("click", (e) => {
+    player.setPlaybackRate(2);
+});
+function onPlayerReady(event) {
+    console.log("playerReady");
+}
 
 </script>
   
