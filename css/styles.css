@@ -4,13 +4,7 @@
 Student Name: Bryan Sevilla
 Assignment Name: css style for projct 3
 Date: 10/30/2025 */
-.video-wrapper{
-    width: 500px;
-    margin: 40px auto 0 auto;
-    border:15px solid #B77466;
-    border-radius: 10px;
- 
-}
+
 
 video{
     width: 60%;
@@ -18,7 +12,7 @@ video{
 .my-controls{
     display: flex;
     list-style:none;
-    justify-content: center;
+    justify-content: left;
 }
 .my-controls li{
     width: 100px;
